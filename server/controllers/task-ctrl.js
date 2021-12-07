@@ -64,4 +64,4 @@ getTasks = async (req, res) => {
     }).catch( err => console.log(err) )
 } 
 
-module.exports = { createTasks, updateTask, deleteTask, getTasks }
+module.exports = { createTask, updateTask, deleteTask, getTasks }
