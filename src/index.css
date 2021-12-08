@@ -79,11 +79,11 @@ body {
 }
 
 
-.viewErasedTaskBtn {
+.viewFinishedTaskBtn {
   position: relative;
   left: 6px;
   height: 2.8rem;
-  font-size: 30px;
+  font-size: 23px;
   cursor: pointer;
   /* outline: 1px solid red; */
   /* box-shadow: 3px 0px 0px #8895b3; */
@@ -111,21 +111,75 @@ body {
   width: 0px;
 }
 
+/* -- FINISHED TASKS STYLES -- */
 
-/* className='currentTasksCntr'>
-            <div className='nav-bar'>
-                <p className='headingApp'>Todo-List</p>
+.finishedTasksCntr {
+  height: 100vh;
+  width: 100vw;
+  background: #ff7477;
+  outline: 1px solid red;
+}
 
-                <p className='dateDisplay'>month day 00:00:00</p>
-            </div>
+.returnBtn-headingCntr {
+  height: 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 2px 0px #2e2f2f;
+}
 
-            <div className='addTaskBar'>
-                <input className='addTaskInput' placeholder='Add Task...'/>
-                
-               
-                <MdAddBox className='addTaskBtn'/>
+.returnBtnCntr {
+  position: relative;
+  left: 10px;
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* outline: 1px solid red; */
+}
 
-                <AiTwotoneDelete className='viewErasedTaskBtn'/>
-            </div>
+.returnBtn {
+  font-size: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  /* background: white; */
+  padding: 5px 5px 5px 2px;
+  border-radius: 50%;
+}
 
-            <div className='todoTasksCntr'> */
+.returnBtn:hover {
+  color: #fff07c;
+  transition: .1s linear;
+}
+
+.returnBtn:active {
+  color: initial;
+  background: #e2dfdf;
+  transition: .2s all;
+}
+
+
+.returnBtnHeading {
+  font-size: 18px;
+}
+
+.finishedTasksHeading {
+  position: relative;
+  right: 10px;
+  font-family: 'Titillium Web';
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.indFnshdTasksCntr {
+  height: 91.6vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  /* outline: 1px solid white; */
+}
+
+.indFnshdTasksCntr::-webkit-scrollbar {
+  width: 0px;
+}
+

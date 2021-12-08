@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CurrentTasksView, IndTodoTask, IndSavedTask, SavedTasksView } from './pages';
+import { CurrentTasksView, IndTodoTask, IndSavedTask, FinishedTasksView } from './pages';
 import api from './api';
 
 function App() {
@@ -9,6 +9,7 @@ function App() {
   return (
     <div className="container">
       <CurrentTasksView /> 
+      {/* <FinishedTasksView />  */}
     </div>
   );
 }

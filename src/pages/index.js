@@ -1,6 +1,6 @@
 import CurrentTasksView from '../components/CurrentTasksView';
-import SavedTasksView from '../components/SavedTasksView';
+import FinishedTasksView from '../components/FinishedTasksView';
 import IndTodoTask from '../components/IndTodoTask';
-import IndSavedTask from '../components/IndSavedTask';
+import IndFinishedTask from '../components/IndFinishedTask';
 
-export { CurrentTasksView, SavedTasksView, IndTodoTask, IndSavedTask}
+export { CurrentTasksView, FinishedTasksView, IndTodoTask, IndFinishedTask}
