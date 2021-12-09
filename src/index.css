@@ -5,6 +5,7 @@ body {
 }
 
 .container {
+  display: flex;
   height: 100vh;
   width: 100vw;
   font-family: 'Roboto Mono';
@@ -113,6 +114,8 @@ body {
 /* -- FINISHED TASKS STYLES -- */
 
 .finishedTasksCntr {
+  position: absolute;
+  top: -200rem;
   height: 100vh;
   width: 100vw;
   background: #ff7477;
@@ -290,6 +293,12 @@ body {
   transition: .2s all;
 }
 
+@media screen and ( min-width: 390px ) {
+  .returnBtnCntr {
+    width: 25%;
+  }
+}
+
 @media screen and ( min-width: 500px ) {
   .addTaskInput {
     width: 75%;
@@ -330,3 +339,41 @@ body {
     left: 15px;
   }
 }
+
+@media screen and ( min-width: 700px ) {
+
+  .nav-bar {
+    height: 3.5rem;
+  }
+
+  .headingApp {
+    font-size: 23px;
+  }
+
+  .dateDisplay {
+    right: 25px;
+    font-size: 13px;
+  }
+
+  .addTaskBtn {
+    padding-right: 15px;
+  }
+
+  .viewFinishedTaskBtn {
+    right: 4px;
+  }
+
+  .returnBtnCntr {
+    width: 15%;
+  }
+
+  .removeTaskBtn {
+    right: 18px;
+  }
+
+  .finishedTasksHeading {
+    right: 25px;
+  }
+}
+
+
