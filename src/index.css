@@ -381,12 +381,12 @@ body {
   .finishedTasksCntr {
     position: relative;
     top: 0px;
-    width: 50%;
+    width: 40%;
     /* opacity: 0; */
   }
 
   .currentTasksCntr {
-    width: 50%;
+    width: 60%;
     outline: 1px solid magenta;
   }
 
@@ -409,11 +409,12 @@ body {
   }
 
   .addTaskBtn {
-    padding-right: 15px;
+    box-shadow: none;
+    padding-right: 0px;
   }
 
   .viewFinishedTaskBtn {
-    right: 4px;
+    position: absolute;
   }
 
   .returnBtnCntr {
@@ -430,7 +431,7 @@ body {
   }
 
   .indFinishedTask .taskName, .indFinishedTask .taskNameInput {
-    right: 7rem;
+    right: 4.5rem;
   }
 
   .dateInput {
@@ -442,5 +443,50 @@ body {
     right: 25px;
   }
 }
+
+@media screen and  ( min-width: 900px ) {
+  .indFinishedTask .taskName, .indFinishedTask .taskNameInput {
+    right: 6rem;
+  }
+}
+
+@media screen and ( min-width: 1300px ) {
+
+  .finishedTasksCntr {
+    position: relative;
+    top: 0px;
+    width: 40%;
+    /* opacity: 0; */
+  }
+
+  .currentTasksCntr {
+    width: 60%;
+    outline: 1px solid magenta;
+  }
+
+  .todoTasksCntr {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+  }
+
+  .indTodoTask {
+    justify-content: space-around;
+    width: 97%;
+    /* box-shadow: .5px 0px 2px #e2dfdf, -.5px 0px 2px #e2dfdf; */
+  }
+}
+
+@media screen and ( min-width: 1500px ) {
+  .indFinishedTask .taskName, .indFinishedTask .taskNameInput {
+    right: 11rem;
+  }
+
+  .indTodoTask {
+    width: 94%;
+  }
+}
+
 
 
