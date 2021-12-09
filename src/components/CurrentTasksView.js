@@ -15,7 +15,7 @@ const CurrentTasksView = () => {
             <div className='addTaskBar'>
                 <input className='addTaskInput' placeholder='Add Task...'/>
                 
-                {/* <p className='addTaskBtn'>Add Task</p> */}
+                <p className='addTaskBtnLrg'>Add Task</p>
                 <MdAddBox className='addTaskBtn'/>
 
                 <BsCheckSquareFill className='viewFinishedTaskBtn'/>
