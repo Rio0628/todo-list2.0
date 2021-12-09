@@ -1,7 +1,7 @@
 import React from 'react';
 import { MdAddBox } from 'react-icons/md';
-// import { AiTwotoneDelete } from 'react-icons/ai';
-import { BsCheckSquareFill } from 'react-icons/bs'
+import { BsCheckSquareFill } from 'react-icons/bs';
+import { IndTodoTask } from '../pages';
 
 const CurrentTasksView = () => {
     return (
@@ -22,7 +22,11 @@ const CurrentTasksView = () => {
             </div>
 
             <div className='todoTasksCntr'>
-
+                <IndTodoTask />
+                <IndTodoTask />
+                <IndTodoTask />
+                <IndTodoTask />
+                <IndTodoTask />
             </div>
         </div>
     );
