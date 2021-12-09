@@ -3,7 +3,7 @@ import { MdAddBox } from 'react-icons/md';
 import { BsCheckSquareFill } from 'react-icons/bs';
 import { IndTodoTask } from '../pages';
 
-const CurrentTasksView = () => {
+const CurrentTasksView = (props) => {
     return (
         <div className='currentTasksCntr'>
             <div className='nav-bar'>
@@ -15,14 +15,14 @@ const CurrentTasksView = () => {
             <div className='addTaskBar'>
                 <input className='addTaskInput' placeholder='Add Task...'/>
                 
-                <p className='addTaskBtnLrg'>Add Task</p>
-                <MdAddBox className='addTaskBtn'/>
+                <p className='addTaskBtnLrg' onClick={props.onClick}>Add Task</p>
+                <MdAddBox className='addTaskBtn' onClick={props.onClick}/>
 
-                <BsCheckSquareFill className='viewFinishedTaskBtn'/>
+                <BsCheckSquareFill className='viewFinishedTaskBtn' onClick={props.handleFinishedTsksView}/>
             </div>
 
             <div className='todoTasksCntr'>
-                <IndTodoTask />
+                <IndTodoTask onClick={props.onClick}/>
                 <IndTodoTask />
                 <IndTodoTask />
                 <IndTodoTask />

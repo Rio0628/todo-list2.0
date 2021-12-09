@@ -2,11 +2,14 @@ import React from 'react';
 import { BiLeftArrow } from 'react-icons/bi';
 import { IndFinishedTask } from  '../pages';
 
-const FinishedTasksView = () => {
+const FinishedTasksView = (props) => {
+
+    const handleFinishedTasksView = props.finishedTsksActive ? 'active' : '';
+
     return (
-        <div className='finishedTasksCntr'>
+        <div className={'finishedTasksCntr ' + handleFinishedTasksView}>
             <div className='returnBtn-headingCntr'>
-                <div className='returnBtnCntr'>
+                <div className='returnBtnCntr' onClick={props.handleFinishedTsksView}>
                     <BiLeftArrow className='returnBtn'/>
                     <p className='returnBtnHeading'>Return</p>
                 </div>
@@ -15,7 +18,7 @@ const FinishedTasksView = () => {
             </div>
 
             <div className='indFnshdTasksCntr'>
-                <IndFinishedTask />
+                <IndFinishedTask onClick={props.onClick}/>
                 <IndFinishedTask />
                 <IndFinishedTask />
                 <IndFinishedTask />
