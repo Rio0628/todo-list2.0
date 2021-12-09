@@ -1,6 +1,6 @@
 import React from 'react';
 import { BiLeftArrow } from 'react-icons/bi';
-
+import { IndFinishedTask } from  '../pages';
 
 const FinishedTasksView = () => {
     return (
@@ -15,7 +15,10 @@ const FinishedTasksView = () => {
             </div>
 
             <div className='indFnshdTasksCntr'>
-
+                <IndFinishedTask />
+                <IndFinishedTask />
+                <IndFinishedTask />
+                <IndFinishedTask />
             </div>
         </div>
     );
