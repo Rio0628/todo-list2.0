@@ -18,7 +18,7 @@ const FinishedTasksView = (props) => {
             </div>
 
             <div className='indFnshdTasksCntr'>
-                <IndFinishedTask onClick={props.onClick}/>
+                <IndFinishedTask taskNameEdit={props.taskNameEdit} onClick={props.onClick} onChange={props.onChange}/>
                 <IndFinishedTask />
                 <IndFinishedTask />
                 <IndFinishedTask />

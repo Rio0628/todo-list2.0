@@ -13,7 +13,7 @@ const CurrentTasksView = (props) => {
             </div>
 
             <div className='addTaskBar'>
-                <input className='addTaskInput' placeholder='Add Task...'/>
+                <input className='addTaskInput' placeholder='Add Task...' onChange={props.onChange}/>
                 
                 <p className='addTaskBtnLrg' onClick={props.onClick}>Add Task</p>
                 <MdAddBox className='addTaskBtn' onClick={props.onClick}/>
@@ -22,7 +22,7 @@ const CurrentTasksView = (props) => {
             </div>
 
             <div className='todoTasksCntr'>
-                <IndTodoTask onClick={props.onClick}/>
+                <IndTodoTask taskNameEdit={props.taskNameEdit} onClick={props.onClick} onChange={props.onChange}/>
                 <IndTodoTask />
                 <IndTodoTask />
                 <IndTodoTask />

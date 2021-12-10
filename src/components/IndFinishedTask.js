@@ -6,9 +6,13 @@ const IndFinishedTask = (props) => {
         <div className='indFinishedTask'>
             <BsArrowLeftSquareFill className='returnTaskBtn' onClick={props.onClick}/>
 
-            {/* <p className='taskName' onClick={props.onClick}>Task Name</p> */}
+            { props.taskNameEdit ?
+                <textarea className='taskNameInput' type='text' value='Task Name '/>
+            : <p className='taskName' onClick={props.onClick}>Task Name</p> }
 
-            <textarea className='taskNameInput' type='text' value='Task Name '/>
+            {/*  */}
+
+            
         </div>
     );
 }

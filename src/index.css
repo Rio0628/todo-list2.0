@@ -480,8 +480,12 @@ body {
 }
 
 @media screen and  ( min-width: 900px ) {
-  .indFinishedTask .taskName, .indFinishedTask .taskNameInput {
+  .indFinishedTask .taskNameInput {
     right: 6rem;
+  }
+
+  .indFinishedTask .taskName {
+    left: -5rem;
   }
 }
 
