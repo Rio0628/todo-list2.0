@@ -474,7 +474,12 @@ body {
     cursor: default;
   }
 
-  .taskName, .taskNameInput {
+  .taskName {
+    width: 25%;
+  }
+
+  .taskNameInput {
+    text-align: center;
     width: 25%;
   }
 

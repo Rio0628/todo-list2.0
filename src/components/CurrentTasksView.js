@@ -8,7 +8,7 @@ const CurrentTasksView = (props) => {
     
     if (props.todoTasks) {
         for (let i = 0; i < props.todoTasks.length; i++) {
-            currentTasksCntr.push( <IndTodoTask task={props.todoTasks[i]} taskNameEdit={props.taskNameEdit} onClick={props.onClick} onChange={props.onChange} key={'IndTodoTask ' + i}/> );
+            currentTasksCntr.push( <IndTodoTask currentTaskOpen={props.currentTaskOpen} task={props.todoTasks[i]} taskNameEdit={props.taskNameEdit} onClick={props.onClick} onChange={props.onChange} key={'IndTodoTask ' + i}/> );
         }
     }
     

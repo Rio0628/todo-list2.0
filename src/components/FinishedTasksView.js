@@ -7,7 +7,7 @@ const FinishedTasksView = (props) => {
 
     if (props.finishedTasks) {
         for (let i = 0; i < props.finishedTasks.length; i++) {
-            finishedTasksCntr.push(<IndFinishedTask task={props.finishedTasks[i]} taskNameEdit={props.taskNameEdit} onClick={props.onClick} onChange={props.onChange} key={'FinishedTask ' + i}/>);
+            finishedTasksCntr.push(<IndFinishedTask currentTaskOpen={props.currentTaskOpen} task={props.finishedTasks[i]} taskNameEdit={props.taskNameEdit} onClick={props.onClick} onChange={props.onChange} key={'FinishedTask ' + i}/>);
         }
     }
 

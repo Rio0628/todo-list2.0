@@ -17,6 +17,7 @@ class App extends Component {
     todoTasks = await allTasks.filter( task => task.type === 'to-do');
     finishedTasks = await allTasks.filter( task => task.type === 'finished');
     
+    this.setState({ allTasks: allTasks });
     this.setState({ todoTasks: todoTasks });
     this.setState({ finishedTasks: finishedTasks });
 
@@ -31,11 +32,16 @@ class App extends Component {
   
   render () {
 
-    const onChange = (e) => {
+    const onChange = async (e) => {
       console.log(e.target.getAttribute('task'))
 
       if (e.target.className === 'taskNameInput') {
-        this.setState({ taskNameInput: e.target.value });
+        await this.setState({ taskNameInput: e.target.value });
+        let task = this.state.allTasks.filter( task => task._id === e.target.getAttribute('task') );
+        task[0].name = e.target.value;
+
+        await api.updateTaskById(task[0]._id, task[0]).then( task => console.log('Task Updated')).catch( err => alert(err) );
+
         // Include the rest of the code that updates the certain task
       }
 
@@ -51,7 +57,12 @@ class App extends Component {
     const onClick = async (e) => {
       console.log(e.target.className)
 
+      if (e.target.className === 'container') {
+        this.setState({ currentTaskOpen: '' });
+      }
+
       if (e.target.className === 'taskName') {
+        this.setState({ currentTaskOpen: e.target.getAttribute('task') });
         this.setState({ taskNameEdit: true });
       }
 
@@ -80,10 +91,10 @@ class App extends Component {
 
         await api.updateTaskById(task[0]._id, task[0]).then( task => console.log('task updated') );
         this.handleShowingTasks();
-        
-
       }
     }
+
+    console.log(this.state.taskNameInput)
 
     const setFinishedViewState = () => this.setState({ finishedTasksViewOn: !this.state.finishedTasksViewOn });
 
@@ -96,9 +107,9 @@ class App extends Component {
     console.log(this.state.currentId)
       
     return (
-      <div className="container" >
-        <CurrentTasksView todoTasks={this.state.todoTasks} taskNameEdit={this.state.taskNameEdit} handleFinishedTsksView={setFinishedViewState} onChange={onChange} addNewTask={addNewTask} onClick={onClick}/> 
-        <FinishedTasksView finishedTasks={this.state.finishedTasks} taskNameEdit={this.state.taskNameEdit} finishedTsksActive={this.state.finishedTasksViewOn} handleFinishedTsksView={setFinishedViewState} onClick={onClick} onChange={onChange}/> 
+      <div className="container" onClick={onClick}>
+        <CurrentTasksView currentTaskOpen={this.state.currentTaskOpen} todoTasks={this.state.todoTasks} taskNameEdit={this.state.taskNameEdit} handleFinishedTsksView={setFinishedViewState} onChange={onChange} addNewTask={addNewTask} onClick={onClick}/> 
+        <FinishedTasksView currentTaskOpen={this.state.currentTaskOpen} finishedTasks={this.state.finishedTasks} taskNameEdit={this.state.taskNameEdit} finishedTsksActive={this.state.finishedTasksViewOn} handleFinishedTsksView={setFinishedViewState} onClick={onClick} onChange={onChange}/> 
       </div>
     );
   }
