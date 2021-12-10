@@ -46,7 +46,7 @@ updateTask = async (req, res) => {
 
 deleteTask = async (req, res) => {
     await Task.findOneAndDelete({ _id: req.params.id }, (err, task) => {
-        if (err) { res.return(400).json({ success: false, error: err }); }
+        if (err) { res.status(400).json({ success: false, error: err }); }
     
         if (!task) { return res.status(404).json({ success: false, error: 'Task not found' }) }
 

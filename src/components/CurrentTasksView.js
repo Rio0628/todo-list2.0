@@ -25,8 +25,8 @@ const CurrentTasksView = (props) => {
             <div className='addTaskBar'>
                 <input className='addTaskInput' placeholder='Add Task...' onChange={props.onChange}/>
                 
-                <p className='addTaskBtnLrg' onClick={props.onClick}>Add Task</p>
-                <MdAddBox className='addTaskBtn' onClick={props.onClick}/>
+                <p className='addTaskBtnLrg' onClick={props.addNewTask}>Add Task</p>
+                <MdAddBox className='addTaskBtn' onClick={props.addNewTask}/>
 
                 <BsCheckSquareFill className='viewFinishedTaskBtn' onClick={props.handleFinishedTsksView}/>
             </div>

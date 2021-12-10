@@ -4,7 +4,7 @@ import { AiTwotoneDelete } from 'react-icons/ai';
 const IndTodoTask = (props) => {
     
     const setDate = () => props.task.date ? props.task.date : '';
-
+console.log(props.task._id)
     return (
         <div className='indTodoTask'>
             <input type='checkbox' className='finishTaskBtn' onChange={props.onChange}  task={props.task._id}/>
@@ -19,7 +19,7 @@ const IndTodoTask = (props) => {
 
             <input type='date' className='dateInput' value={setDate()} onChange={props.onChange}  task={props.task._id}/>
 
-            <AiTwotoneDelete className='removeTaskBtn' onClick={props.onClick}  task={props.task._id}/>
+            <div className='removeTaskBtn' onClick={props.onClick} task={props.task._id}>Remove</div>
         </div>
     );
 }

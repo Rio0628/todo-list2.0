@@ -52,7 +52,7 @@ class App extends Component {
       }
     }
 
-    const onClick = (e) => {
+    const onClick = async (e) => {
       console.log(e.target.className)
 
       if (e.target.className === 'taskName') {
@@ -62,15 +62,27 @@ class App extends Component {
       if (e.target.className === 'todoTasksCntr' || e.target.className === 'indFnshdTasksCntr') {
         this.setState({ taskNameEdit: false });
       }
+
+      if (e.target.className === 'removeTaskBtn') {
+        await this.setState({ currentId: e.target.getAttribute('task') });
+        await api.deleteTaskById(e.target.getAttribute('task')).then( task => alert('task') ).catch( err => alert('error removing task. ') );
+        this.handleShowingTasks();
+      }
     }
 
     const setFinishedViewState = () => this.setState({ finishedTasksViewOn: !this.state.finishedTasksViewOn });
 
-    // console.log(this.state.taskNameEdit)
+    const addNewTask = async () => {
+      let object = { name: this.state.addTaskInput, date: '0000-00-00', type: 'to-do'}
+      await api.insertTask(object).then( task => alert('Task Added') ).catch( err => alert('Name needed for adding task.') );
+      this.handleShowingTasks();
+    };
+
+    console.log(this.state.currentId)
       
     return (
-      <div className="container" onClick={onClick}>
-        <CurrentTasksView todoTasks={this.state.todoTasks} taskNameEdit={this.state.taskNameEdit} handleFinishedTsksView={setFinishedViewState} onChange={onChange} onClick={onClick}/> 
+      <div className="container" >
+        <CurrentTasksView todoTasks={this.state.todoTasks} taskNameEdit={this.state.taskNameEdit} handleFinishedTsksView={setFinishedViewState} onChange={onChange} addNewTask={addNewTask} onClick={onClick}/> 
         <FinishedTasksView finishedTasks={this.state.finishedTasks} taskNameEdit={this.state.taskNameEdit} finishedTsksActive={this.state.finishedTasksViewOn} handleFinishedTsksView={setFinishedViewState} onClick={onClick} onChange={onChange}/> 
       </div>
     );

@@ -10,7 +10,6 @@ const FinishedTasksView = (props) => {
             finishedTasksCntr.push(<IndFinishedTask task={props.finishedTasks[i]} taskNameEdit={props.taskNameEdit} onClick={props.onClick} onChange={props.onChange} key={'FinishedTask ' + i}/>);
         }
     }
-    
 
     const handleFinishedTasksView = props.finishedTsksActive ? 'active' : '';
 
