@@ -1,13 +1,13 @@
 import React from 'react';
-import { AiTwotoneDelete } from 'react-icons/ai';
+import { MdFileDownloadDone } from 'react-icons/md'
 
 const IndTodoTask = (props) => {
     
     const setDate = () => props.task.date ? props.task.date : '';
-console.log(props.task._id)
+
     return (
         <div className='indTodoTask'>
-            <input type='checkbox' className='finishTaskBtn' onChange={props.onChange}  task={props.task._id}/>
+            <div className='finishTaskBtn' onClick={props.onClick} task={props.task._id}><MdFileDownloadDone className='icon'/></div>
 
             { props.taskNameEdit ?
                 <textarea className='taskNameInput' type='text' defaultValue={props.task.name} task={props.task._id}/>

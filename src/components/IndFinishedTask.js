@@ -7,7 +7,7 @@ const IndFinishedTask = (props) => {
 
     return (
         <div className='indFinishedTask'>
-            <BsArrowLeftSquareFill className='returnTaskBtn' onClick={props.onClick} task={props.task._id}/>
+            <div className='returnTaskBtn' onClick={props.onClick} task={props.task._id}><BsArrowLeftSquareFill className='icon'/></div>
 
             { props.taskNameEdit ?
                 <textarea className='taskNameInput' type='text' defaultValue={props.task.name} task={props.task._id}/>

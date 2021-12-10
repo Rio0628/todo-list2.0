@@ -215,10 +215,24 @@ body {
   left: 6px;
   height: 16px;
   width: 16px;
+  height: 25px;
+  width: 25px;
   font-size: 25px;
   border-radius: 2px;
   cursor: pointer;
   /* outline: 1px solid black; */
+}
+
+.finishTaskBtn:hover {
+  background:#444;
+  color: #fff;
+  transition: .1s linear;
+}
+
+.finishTaskBtn:active {
+  background: none;
+  color: #fff07c;
+  transition: .2s linear;
 }
 
 .taskName {
@@ -287,6 +301,10 @@ body {
   font-size: 25px;
   border-radius: 2px;
   cursor: pointer;
+}
+
+.icon {
+  pointer-events: none;
 }
 
 .returnTaskBtn:hover {

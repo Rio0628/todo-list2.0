@@ -30,10 +30,6 @@ class App extends Component {
   }
   
   render () {
-    // api.getAllTasks().then( tasks => console.log(tasks.data.data)
-  
-    // console.log(this.state.todoTasks)
-    // console.log(this.state.finishedTasks)
 
     const onChange = (e) => {
       console.log(e.target.getAttribute('task'))
@@ -67,6 +63,25 @@ class App extends Component {
         await this.setState({ currentId: e.target.getAttribute('task') });
         await api.deleteTaskById(e.target.getAttribute('task')).then( task => alert('task') ).catch( err => alert('error removing task. ') );
         this.handleShowingTasks();
+      }
+      
+      if (e.target.className === 'finishTaskBtn') {
+        const task = this.state.todoTasks.filter( task => task._id === e.target.getAttribute('task'))
+        task[0].type = 'finished';
+
+        await api.updateTaskById(task[0]._id, task[0]).then( task => console.log('task updated') );
+        this.handleShowingTasks();
+        // console.log(task)
+      }
+
+      if (e.target.className === 'returnTaskBtn') {
+        const task = this.state.finishedTasks.filter( task => task._id === e.target.getAttribute('task'));
+        task[0].type = 'to-do';
+
+        await api.updateTaskById(task[0]._id, task[0]).then( task => console.log('task updated') );
+        this.handleShowingTasks();
+        
+
       }
     }
 
