@@ -4,6 +4,16 @@ import { BsCheckSquareFill } from 'react-icons/bs';
 import { IndTodoTask } from '../pages';
 
 const CurrentTasksView = (props) => {
+    let currentTasksCntr = [];
+    
+    if (props.todoTasks) {
+        for (let i = 0; i < props.todoTasks.length; i++) {
+            currentTasksCntr.push( <IndTodoTask task={props.todoTasks[i]} taskNameEdit={props.taskNameEdit} onClick={props.onClick} onChange={props.onChange} key={'IndTodoTask ' + i}/> );
+        }
+    }
+    
+
+
     return (
         <div className='currentTasksCntr'>
             <div className='nav-bar'>
@@ -22,11 +32,7 @@ const CurrentTasksView = (props) => {
             </div>
 
             <div className='todoTasksCntr'>
-                <IndTodoTask taskNameEdit={props.taskNameEdit} onClick={props.onClick} onChange={props.onChange}/>
-                <IndTodoTask />
-                <IndTodoTask />
-                <IndTodoTask />
-                <IndTodoTask />
+                {currentTasksCntr}
             </div>
         </div>
     );

@@ -3,6 +3,14 @@ import { BiLeftArrow } from 'react-icons/bi';
 import { IndFinishedTask } from  '../pages';
 
 const FinishedTasksView = (props) => {
+    let finishedTasksCntr = [];
+
+    if (props.finishedTasks) {
+        for (let i = 0; i < props.finishedTasks.length; i++) {
+            finishedTasksCntr.push(<IndFinishedTask task={props.finishedTasks[i]} taskNameEdit={props.taskNameEdit} onClick={props.onClick} onChange={props.onChange} key={'FinishedTask ' + i}/>);
+        }
+    }
+    
 
     const handleFinishedTasksView = props.finishedTsksActive ? 'active' : '';
 
@@ -18,10 +26,7 @@ const FinishedTasksView = (props) => {
             </div>
 
             <div className='indFnshdTasksCntr'>
-                <IndFinishedTask taskNameEdit={props.taskNameEdit} onClick={props.onClick} onChange={props.onChange}/>
-                <IndFinishedTask />
-                <IndFinishedTask />
-                <IndFinishedTask />
+                { finishedTasksCntr}
             </div>
         </div>
     );
