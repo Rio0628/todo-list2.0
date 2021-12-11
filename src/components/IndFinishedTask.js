@@ -4,6 +4,7 @@ import { BsArrowLeftSquareFill } from 'react-icons/bs'
 const IndFinishedTask = (props) => {
     let nameEdit = false;
 
+    // Conditional to show the textarea of a task if the prop id is the same as the currentTaskOpen prop
     if (props.currentTaskOpen === props.task._id) {
         nameEdit = props.taskNameEdit;
     }

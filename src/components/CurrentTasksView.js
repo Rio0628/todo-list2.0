@@ -6,13 +6,12 @@ import { IndTodoTask } from '../pages';
 const CurrentTasksView = (props) => {
     let currentTasksCntr = [];
     
+    // Conditional for bringing the current finished tasks to view 
     if (props.todoTasks) {
         for (let i = 0; i < props.todoTasks.length; i++) {
             currentTasksCntr.push( <IndTodoTask currentTaskOpen={props.currentTaskOpen} task={props.todoTasks[i]} taskNameEdit={props.taskNameEdit} onClick={props.onClick} onChange={props.onChange} key={'IndTodoTask ' + i}/> );
         }
     }
-    
-
 
     return (
         <div className='currentTasksCntr'>
