@@ -19,7 +19,7 @@ const CurrentTasksView = (props) => {
             <div className='nav-bar'>
                 <p className='headingApp'>Todo-List</p>
 
-                <p className='dateDisplay'>month day | 00:00:00</p>
+                <p className='dateDisplay'>{props.clockTime}</p>
             </div>
 
             <div className='addTaskBar'>

@@ -12,7 +12,7 @@ class App extends Component {
 
   async handleShowingTasks () {
     let allTasks, todoTasks, finishedTasks;
-    await api.getAllTasks().then( tasks => allTasks = tasks.data.data );
+    await api.getAllTasks().then( tasks => allTasks = tasks.data.data ).catch( allTasks = []);
 
     todoTasks = await allTasks.filter( task => task.type === 'to-do');
     finishedTasks = await allTasks.filter( task => task.type === 'finished');
@@ -21,13 +21,32 @@ class App extends Component {
     this.setState({ todoTasks: todoTasks });
     this.setState({ finishedTasks: finishedTasks });
 
-    console.log(allTasks)
-    console.log(todoTasks)
-    console.log(finishedTasks)
+    // console.log(allTasks)
+    // console.log(todoTasks)
+    // console.log(finishedTasks)
+  }
+
+  async setClockTime () {
+    let date = new Date(), updatedDate;
+    updatedDate = await date.toLocaleString(('en-US'), { timezone: 'America/New_York' }).split(',');
+    date = date.toString().split(' ')
+    const appDate = `${date[1]} ${date[2]} |${updatedDate[1]}`
+    this.setState({ clockTime: appDate });
+    // console.log(appDate);
+
+    let clockTimeout = setTimeout( () => this.setClockTime(), 1000);
+
+    if (this.state.clockStopped) { clearTimeout(clockTimeout) }
+    // console.log(updatedDate);
   }
 
   componentDidMount () {
-      this.handleShowingTasks();
+    this.setClockTime();
+    this.handleShowingTasks();
+  }
+
+  componentWillUnmount () {
+    this.setState({ clockStopped: true });
   }
   
   render () {
@@ -50,7 +69,10 @@ class App extends Component {
       }
 
       if (e.target.className === 'dateInput') {
-        this.setState({ dateInput: e.target.value });
+        let task = this.state.todoTasks.filter( task => task._id === e.target.getAttribute('task') );
+        task[0].date = e.target.value;
+
+        await api.updateTaskById(task[0]._id, task[0]).then( task => console.log('Task Updated'));
       }
     }
 
@@ -72,7 +94,7 @@ class App extends Component {
 
       if (e.target.className === 'removeTaskBtn') {
         await this.setState({ currentId: e.target.getAttribute('task') });
-        await api.deleteTaskById(e.target.getAttribute('task')).then( task => alert('task') ).catch( err => alert('error removing task. ') );
+        await api.deleteTaskById(e.target.getAttribute('task')).then( task => alert('task') ).catch( err => console.log('Error') );
         this.handleShowingTasks();
       }
       
@@ -94,21 +116,22 @@ class App extends Component {
       }
     }
 
-    console.log(this.state.taskNameInput)
+    // console.log(this.state.taskNameInput)
 
     const setFinishedViewState = () => this.setState({ finishedTasksViewOn: !this.state.finishedTasksViewOn });
 
     const addNewTask = async () => {
-      let object = { name: this.state.addTaskInput, date: '0000-00-00', type: 'to-do'}
+      let object = { name: this.state.addTaskInput, date: ' ', type: 'to-do'}
       await api.insertTask(object).then( task => alert('Task Added') ).catch( err => alert('Name needed for adding task.') );
       this.handleShowingTasks();
+      document.querySelector('.addTaskInput').value = ''
     };
 
-    console.log(this.state.currentId)
+    // console.log(this.state.currentId)
       
     return (
       <div className="container" onClick={onClick}>
-        <CurrentTasksView currentTaskOpen={this.state.currentTaskOpen} todoTasks={this.state.todoTasks} taskNameEdit={this.state.taskNameEdit} handleFinishedTsksView={setFinishedViewState} onChange={onChange} addNewTask={addNewTask} onClick={onClick}/> 
+        <CurrentTasksView clockTime={this.state.clockTime} currentTaskOpen={this.state.currentTaskOpen} todoTasks={this.state.todoTasks} taskNameEdit={this.state.taskNameEdit} handleFinishedTsksView={setFinishedViewState} onChange={onChange} addNewTask={addNewTask} onClick={onClick}/> 
         <FinishedTasksView currentTaskOpen={this.state.currentTaskOpen} finishedTasks={this.state.finishedTasks} taskNameEdit={this.state.taskNameEdit} finishedTsksActive={this.state.finishedTasksViewOn} handleFinishedTsksView={setFinishedViewState} onClick={onClick} onChange={onChange}/> 
       </div>
     );

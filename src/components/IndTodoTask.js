@@ -3,7 +3,7 @@ import { MdFileDownloadDone } from 'react-icons/md'
 
 const IndTodoTask = (props) => {
     let nameEdit = false;
-    const setDate = () => props.task.date ? props.task.date : '';
+    const setDate = () => props.task.date !== '' ? props.task.date : null;
 
     if (props.currentTaskOpen === props.task._id) {
         nameEdit = props.taskNameEdit;
