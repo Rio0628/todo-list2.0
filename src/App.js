@@ -13,7 +13,9 @@ class App extends Component {
   async handleShowingTasks () {
     // Method to call all tasks from the database and filter them according to their type value 
     let allTasks, todoTasks, finishedTasks;
+
     await api.getAllTasks().then( tasks => allTasks = tasks.data.data ).catch( allTasks = []);
+    window.location.reload(true);    
 
     todoTasks = await allTasks.filter( task => task.type === 'to-do');
     finishedTasks = await allTasks.filter( task => task.type === 'finished');
@@ -91,8 +93,10 @@ class App extends Component {
       if (e.target.className === 'removeTaskBtn') {
         // Removes a certain task from the database 
         await this.setState({ currentId: e.target.getAttribute('task') });
-        await api.deleteTaskById(e.target.getAttribute('task')).then( task => alert('task') ).catch( err => console.log('Error') );
+
+        await api.deleteTaskById(e.target.getAttribute('task')).then( task => console.log('Task Removed') ).catch( err => this.setState({ allTasks: [] }) );
         this.handleShowingTasks();
+        window.location.reload();
       }
       
       if (e.target.className === 'finishTaskBtn') {
@@ -120,7 +124,7 @@ class App extends Component {
     const addNewTask = async () => {
       // Takes care of adding a new task element to the database
       let object = { name: this.state.addTaskInput, date: ' ', type: 'to-do'}
-      await api.insertTask(object).then( task => alert('Task Added') ).catch( err => alert('Name needed for adding task.') );
+      await api.insertTask(object).then( task => console.log('Task Added') ).catch( err => alert('Name needed for adding task.') );
       this.handleShowingTasks();
       document.querySelector('.addTaskInput').value = ''
     };
