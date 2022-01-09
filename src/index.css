@@ -10,7 +10,7 @@ body {
   width: 100vw;
   font-family: 'Roboto Mono';
   color: #2e2f2f;
-  outline: 1px solid red;
+  animation: comeIntoView .2s 1;
 }
 
 /* -- CURRENT TASKS VIEW STYLES -- */
@@ -188,6 +188,17 @@ body {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  animation: comeIntoView .5s 1;
+}
+
+@keyframes comeIntoView {
+  from {
+    opacity: .2;
+  }
+
+  to {
+    opacity: 1;
+  } 
 }
 
 .indTodoTask:nth-child(even) {

@@ -15,7 +15,6 @@ class App extends Component {
     let allTasks, todoTasks, finishedTasks;
 
     await api.getAllTasks().then( tasks => allTasks = tasks.data.data ).catch( allTasks = []);
-    window.location.reload(true);    
 
     todoTasks = await allTasks.filter( task => task.type === 'to-do');
     finishedTasks = await allTasks.filter( task => task.type === 'finished');
