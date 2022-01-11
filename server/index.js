@@ -1,3 +1,4 @@
+require('dotenv').config(); 
 const express = require('express');
 const cors = require('cors');
 const db = require('./db');
@@ -17,5 +18,7 @@ app.use('/api', taskRouter);
 if (process.env.NODE_ENV === 'production') { // New Line
     app.use(express.static('../build'))
 }
+
+console.log(process.env.DB_PASSWORD)
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
