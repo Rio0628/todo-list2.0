@@ -5,7 +5,7 @@ const db = require('./db');
 const taskRouter = require('./routes/task-router');
 const app = express();
 const apiPort = process.env.PORT || 3000; // New Line
-const publicPath = path.join(__dirname, '..', 'public');
+const buildPath = path.join(__dirname, '..', 'build');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -16,9 +16,9 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 app.get('/', (req, res) => { res.send('Hello World!') });
 app.use('/api', taskRouter);
 
-app.use(express.static(publicPath));
+app.use(express.static(buildPath));
 app.get('*', (req, res) => {
-    res.sendFile(path.join(publicPath, 'index.html'));
+    res.sendFile(path.join(buildPath, 'index.html'));
 });
 
 console.log(process.env.DB_PASSWORD)
