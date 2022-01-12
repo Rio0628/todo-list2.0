@@ -5,7 +5,7 @@ const db = require('./db');
 const taskRouter = require('./routes/task-router');
 const app = express();
 const apiPort = process.env.PORT || 3000; // New Line
-const buildPath = path.join(__dirname, '../', 'build');
+const buildPath = path.join(__dirname, './', 'build');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
