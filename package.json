@@ -21,10 +21,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "build": "npm run build",
-    "install-client": "npm install",
-    "heroku-postbuild": "npm run install-client && npm run build",
-    "start": "concurrently \"set PORT=8000 && react-scripts start\" \"cd server && nodemon server\"",
+    "start": "node server/index",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
