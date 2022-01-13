@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
@@ -20,8 +21,5 @@ app.use(express.static(buildPath));
 app.get('*', (req, res) => {
     res.sendFile(path.join(buildPath, 'index.html'));
 });
-
-console.log(buildPath)
-console.log(process.env.DB_PASSWORD)
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
