@@ -27,10 +27,12 @@
   },
   "scripts": {
     "postinstall": "npm run build",
-    "start": "node index.js",
+    "start": "node index",
+    "dev": "concurrently \"set PORT=8000 && react-scripts --openssl-legacy-provider start\" \" nodemon index\"",
     "test": "react-scripts test",
     "build": "react-scripts --openssl-legacy-provider build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "proxy": "http://localhost:3000"
   },
   "eslintConfig": {
     "extends": [

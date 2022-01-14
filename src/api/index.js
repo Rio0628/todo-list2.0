@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const api = axios.create({ baseURL: `http://localhost:${process.env.PORT || '3000'}/api`, });
+const api = axios.create({ baseURL: `http://localhost:${process.env.REACT_APP_PORT || '3000'}/api`, });
 
 export const insertTask = payload => api.post(`/task`, payload);
 export const getAllTasks = () => api.get(`/tasks`);
