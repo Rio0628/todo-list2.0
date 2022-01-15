@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const api = axios.create({ baseURL: `http://localhost:3000/api`, });
+const api = axios.create({ baseURL: `http://localhost:3000`, });
 
 /* http://localhost:3000/api => API baseURL for dev  */
 
@@ -11,5 +11,3 @@ export const deleteTaskById = id => api.delete(`/api/task/${id}`);
 
 const apis = { insertTask, getAllTasks, updateTaskById, deleteTaskById };
 export default apis;
-
-console.log(process.env.REACT_APP_PORT)

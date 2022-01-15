@@ -26,12 +26,14 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "postinstall": "npm run build",
-    "start": "node index",
+    "postinstall": "cd src && npm run build",
+    "server": "nodemon index.js",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"react-scripts --openssl-legacy-provider start\"",
     "dev": "concurrently \"set PORT=8000 && react-scripts --openssl-legacy-provider start\" \" nodemon index\"",
     "test": "react-scripts test",
     "build": "react-scripts --openssl-legacy-provider build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "cd src && npm install && npm run build"
   },
   "eslintConfig": {
     "extends": [
