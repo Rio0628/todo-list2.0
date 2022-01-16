@@ -24,6 +24,9 @@ else {
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-app.use('/api', taskRouter);
+if (process.env.NODE_ENV === 'production') {
+    app.use('*api', taskRouter);
+}
+else { app.use('/api', taskRouter); };
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
