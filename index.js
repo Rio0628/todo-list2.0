@@ -12,10 +12,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
 
-db.on('error', console.error.bind(console, 'MongoDB connection error:'))
-
-app.use('/api', taskRouter);
-
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(buildPath));
     app.get('*', (req, res) => {
@@ -25,5 +21,9 @@ if (process.env.NODE_ENV === 'production') {
 else {
     app.get('/', (req, res) => { res.send('Hello World!') });
 }
+
+db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+
+app.use('/api', taskRouter);
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
