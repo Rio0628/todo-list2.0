@@ -14,12 +14,16 @@ app.use(express.json());
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-
 app.use('/api', taskRouter);
 
-app.use(express.static(buildPath));
-app.get('*', (req, res) => {
-    res.sendFile(path.join(buildPath, 'index.html'));
-});
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(buildPath));
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(buildPath, 'index.html'));
+    });    
+}
+else {
+    app.get('/', (req, res) => { res.send('Hello World!') });
+}
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
